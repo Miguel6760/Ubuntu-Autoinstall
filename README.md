@@ -17,7 +17,10 @@ Despues de esto son necesarios 2 archivos, meta-data y user-data. Estos irán de
 
 ***¡DEBEN LLAMARSE OBLIGATORIAMENTE user-data y meta-data, SIN EXTENSION DE ARCHIVO, DE LO CONTRARIO SUIBIQUITY NO LO RECONOCERÁ Y PASARÁ A LA INSTALACIÓN INTERACTIVA!***
 
-- meta-data --> simplemente crearlo y dejarlo vacío. ( touch meta-data )
+- meta-data --> simplemente crearlo y dejarlo vacío.
+```bash
+touch meta-data
+```
 - user-data --> es el archivo que orquesta la instalación. Un ejemplo seria:
   
 ```yaml  
