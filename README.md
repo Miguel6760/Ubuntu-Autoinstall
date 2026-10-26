@@ -15,7 +15,7 @@ sudo umount /tmp/ubuntu_mount                                                   
 
 Despues de esto son necesarios 2 archivos, meta-data y user-data. Estos irán dentro de una carpeta llamada nocloud, estando esta en el directorio raíz de la ISO desempaquetada:
 
-¡DEBEN LLAMARSE OBLIGATORIAMENTE user-data y meta-data, SIN EXTENSION DE ARCHIVO, DE LO CONTRARIO SUIBIQUITY NO LO RECONOCERÁ Y PASARÁ A LA INSTALACIÓN INTERACTIVA!
+***¡DEBEN LLAMARSE OBLIGATORIAMENTE user-data y meta-data, SIN EXTENSION DE ARCHIVO, DE LO CONTRARIO SUIBIQUITY NO LO RECONOCERÁ Y PASARÁ A LA INSTALACIÓN INTERACTIVA!***
 
 - meta-data --> simplemente crearlo y dejarlo vacío. ( touch meta-data )
 - user-data --> es el archivo que orquesta la instalación. Un ejemplo seria:
