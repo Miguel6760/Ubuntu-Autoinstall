@@ -3,6 +3,7 @@ Instalacion desatendida de ubuntu con subiquity ( cloud-init )
 
 Primero elegimos la ISO a modificar ( en mi caso he elegido Ubuntu-26.04.1-live-server ). Montamos la ISO:
 
+```bash
 mkdir -p /tmp/ubuntu_server_mount                                                  # Donde se monta la ISO
 mkdir -p /home/miguel7736/ubuntu-custom/ubuntu_server_iso                          # Donde copiarás los archivos de la ISO
 
@@ -10,7 +11,7 @@ sudo mount -o loop ubuntu-26.04.1-live-server.iso /tmp/ubuntu_mount             
 rsync -a /tmp/ubuntu_mount/ /home/miguel7736/ubuntu-custom/ubuntu_server_iso/      # Copiamos el contenido a la carpeta deseada con 'rsync -a' para no perder los enlaces simbólicos
 
 sudo umount /tmp/ubuntu_mount                                                      # Desmonta la ISO
-
+``
 
 Despues de esto son necesarios 2 archivos, meta-data y user-data. Estos irán dentro de una carpeta llamada nocloud, estando esta en el directorio raíz de la ISO desempaquetada:
 
@@ -93,8 +94,9 @@ El comando "curtin in-target --" realiza los cambios en el SO destino, normalmen
 
 Para copiar archivos es muy sencillo, simplemente crea una carpeta en la raiz de la ISO desempaquetada, por ejemplo , 'custom_files'. Después de añadir todo lo necesario para copiar en el script , utilizas el comando cp. Por ejemplo:
 
+```bash
 cp -r /cdrom/custom_files/Android /home/miguel7736/
-
+```
 donde /cdrom es donde está montada la ISO.
 
 Sirve tanto para Ubuntu Desktop como para live-server, la unica diferencia es si quieres conectarte por ssh y la seguridad. En ese caso añadir lo siguiente:
@@ -117,7 +119,7 @@ Sirve tanto para Ubuntu Desktop como para live-server, la unica diferencia es si
 Una vez tienes los 2 archivos pasamos a la configuración del kernel. La iso tiene que saber que debe ver el fichero user-data y realizar la instalación automática. 
 Para ello modificamos el archivo boot/grub/grub.cfg. Debe quedar algo así:
 
-
+```grub
 set timeout=1
 
 loadfont unicode
@@ -139,7 +141,7 @@ menuentry 'UEFI Firmware Settings' {
     fwsetup
 }
 fi
-
+```
 
 "autoinstall" indica que se instalara de manera automática y "ds=nocloud;s=/cdrom/nocloud/" le dice donde encontrar los archivos user-data y meta-data.
 
@@ -147,15 +149,19 @@ fi
 
 Por últmo queda empaquetar de nuevo la ISO. Para ello vamos a necesitar las siguientes aplicaciones:
 
+```bash
 sudo apt install xorriso isolinux
-
+```
 
 Nos situamos en la carpeta de la ISO a empaquetar:
 
+```bash
 cd /home/miguel7736/ubuntu-custom/ubuntu_server_iso 
+```
 
 Y escribimos el siguiente comando:
 
+```bash
 xorriso -as mkisofs -r \
   -V "UBUNTU_AUTOINSTALL" \
   -o /Tu/Ruta/al/iso/ubuntu-26-04-1-desatendido.iso \
@@ -163,4 +169,4 @@ xorriso -as mkisofs -r \
   -c boot.catalog \
   -no-emul-boot -boot-load-size 4 -boot-info-table \
   .
-    
+```  
