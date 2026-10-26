@@ -11,7 +11,7 @@ sudo mount -o loop ubuntu-26.04.1-live-server.iso /tmp/ubuntu_mount             
 rsync -a /tmp/ubuntu_mount/ /home/miguel7736/ubuntu-custom/ubuntu_server_iso/      # Copiamos el contenido a la carpeta deseada con 'rsync -a' para no perder los enlaces simbólicos
 
 sudo umount /tmp/ubuntu_mount                                                      # Desmonta la ISO
-``
+```
 
 Despues de esto son necesarios 2 archivos, meta-data y user-data. Estos irán dentro de una carpeta llamada nocloud, estando esta en el directorio raíz de la ISO desempaquetada:
 
