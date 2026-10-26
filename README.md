@@ -19,6 +19,7 @@ Despues de esto son necesarios 2 archivos, meta-data y user-data. Estos irán de
 - meta-data --> simplemente crearlo y dejarlo vacío. ( touch meta-data )
 - user-data --> es el archivo que orquesta la instalación. Un ejemplo seria:
   
+```yaml  
 #cloud-config
 autoinstall:
   version: 1
@@ -84,7 +85,7 @@ autoinstall:
     
     # Limpiar el script temporal
     - rm -f /target/tmp/setup.sh
-
+```
 
 El comando "curtin in-target --" realiza los cambios en el SO destino, normalmente se refiere al directorio /target.
 
@@ -98,6 +99,7 @@ donde /cdrom es donde está montada la ISO.
 
 Sirve tanto para Ubuntu Desktop como para live-server, la unica diferencia es si quieres conectarte por ssh y la seguridad. En ese caso añadir lo siguiente:
 
+```yaml 
   # SSH
   ssh:
     install-server: true
@@ -108,7 +110,7 @@ Sirve tanto para Ubuntu Desktop como para live-server, la unica diferencia es si
 
     
   updates: security
-
+```
 
 
 
