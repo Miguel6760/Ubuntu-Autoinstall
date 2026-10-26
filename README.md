@@ -4,7 +4,7 @@ Instalacion desatendida de ubuntu con subiquity ( cloud-init )
 Primero elegimos la ISO a modificar ( en mi caso he elegido Ubuntu-26.04.1-live-server ). Montamos la ISO:
 
 ```bash
-mkdir -p /tmp/ubuntu_server_mount                                                  # Donde se monta la ISO
+mkdir -p /tmp/ubuntu_mount                                                         # Donde se monta la ISO
 mkdir -p /home/miguel7736/ubuntu-custom/ubuntu_server_iso                          # Donde copiarás los archivos de la ISO
 
 sudo mount -o loop ubuntu-26.04.1-live-server.iso /tmp/ubuntu_mount                # Montamos la ISO
