@@ -211,7 +211,7 @@ linux  /casper/vmlinuz autoinstall nompath "ds=nocloud;s=/cdrom/nocloud/" ---
 Ahora extraeremos el archivo casper/initrd, el cual contiene sl sistema de archivos base del SO:
 
 ```bash
-mkdir -p /tmp/initrd-unpack
+mkdir -p /tmp/initrd-unpacked
 unmkinitramfs /ruta/a/casper/initrd /tmp/initrd-unpacked
 ```
 
