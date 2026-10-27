@@ -202,4 +202,49 @@ xorriso -as mkisofs -r \
 bindings file /etc/multipath/bindingsfatal configuration error, aborting
 ```
 
+Modifica esta linea del archivo boot/grub/grub.cfg:
 
+```grub
+linux  /casper/vmlinuz autoinstall nompath "ds=nocloud;s=/cdrom/nocloud/" ---
+```
+
+Ahora extraeremos el archivo casper/initrd, el cual contiene sl sistema de archivos base del SO:
+
+```bash
+mkdir -p /tmp/initrd-unpack
+unmkinitramfs /ruta/a/casper/initrd /tmp/initrd-unpacked
+```
+
+Deberia salir una lista de directorios parecido a esto:
+
+```bash
+miguel7736@miguel7736-SATELLITE-PRO-C50-J:~/ubuntu-custom/initrd_unpacked$ ls
+bin  conf  etc  init  kernel  lib  lib64  run  sbin  scripts  usr  var
+```
+
+Ahora creamos manualmente la ruta al archivo /etc/multipath/bindings:
+
+```bash
+mkdir -p /tmp/initrd-unpacked/etc/multipath
+
+cat << 'EOF' > /tmp/initrd-unpacked/etc/multipath/bindings
+# Multipath bindings, Version : 1.0
+# NOTE: this file is automatically maintained by the multipath program.
+# You should not need to edit this file in normal circumstances.
+#
+# Format:
+# alias wwid
+#
+EOF
+```
+
+
+Por último, volvemos a empaquetar el directorio. Nos situamos en el directori /tmp/initrd-unpacked:
+
+```bash
+cd /tmp/initrd-unpacked
+
+sudo find . -mindepth 1 | sudo cpio -o -H newc | zstd -19 -T0 > /ruta/a/tu/casper/initrd
+```
+
+Volvemos a empaquetar la ISO y ya no debería dar problemas.
