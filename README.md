@@ -177,10 +177,29 @@ Y escribimos el siguiente comando:
 
 ```bash
 xorriso -as mkisofs -r \
-  -V "UBUNTU_AUTOINSTALL" \
-  -o /Tu/Ruta/al/iso/ubuntu-26-04-1-desatendido.iso \
-  -J -l -b boot/grub/i386-pc/eltorito.img \
+  -V 'UBUNTU_AUTOINSTALL' \
+  -o /run/media/miguel7736/Ventoy/ubuntu-server-custom.iso \
+  -J -joliet-long -l \
+  -b boot/grub/i386-pc/eltorito.img \
   -c boot.catalog \
   -no-emul-boot -boot-load-size 4 -boot-info-table \
+  -eltorito-alt-boot \
+  -e EFI/boot/bootx64.efi \
+  -no-emul-boot \
+  -isohybrid-gpt-basdat \
   .
-```  
+```
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+***EN CASO DE QUE OS DE EL SIGUIENTE ERROR:***
+
+```bash
+ 0.950388 | _check_bindings_file: failed to read header from
+
+/etc/multipath/bindings 0.951323 323 ERROR: bad settings in read-only
+
+bindings file /etc/multipath/bindingsfatal configuration error, aborting
+```
+
+
