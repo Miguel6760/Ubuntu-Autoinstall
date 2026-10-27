@@ -178,7 +178,7 @@ Y escribimos el siguiente comando:
 ```bash
 xorriso -as mkisofs -r \
   -V 'UBUNTU_AUTOINSTALL' \
-  -o /run/media/miguel7736/Ventoy/ubuntu-server-custom.iso \
+  -o /run/media/miguel7736/Ventoy/ubuntu-server-custom.iso \      # Vuestra ruta al .iso de salida
   -J -joliet-long -l \
   -b boot/grub/i386-pc/eltorito.img \
   -c boot.catalog \
