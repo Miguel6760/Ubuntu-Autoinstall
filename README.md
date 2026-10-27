@@ -148,7 +148,18 @@ fi
 
 "autoinstall" indica que se instalara de manera automática y "ds=nocloud;s=/cdrom/nocloud/" le dice donde encontrar los archivos user-data y meta-data.
 
+Deberia quedar estructurado así:
 
+```bash
+ubuntu_iso/
+├── boot/
+│   └── grub/
+│       └── grub.cfg
+├── nocloud/
+│   ├── user-data
+│   └── meta-data
+└── custom_files/
+```
 
 Por últmo queda empaquetar de nuevo la ISO. Para ello vamos a necesitar las siguientes aplicaciones:
 
