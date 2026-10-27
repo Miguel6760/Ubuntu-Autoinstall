@@ -151,7 +151,7 @@ fi
 Deberia quedar estructurado así:
 
 ```bash
-ubuntu_iso/
+ubuntu_server_iso/
 ├── boot/
 │   └── grub/
 │       └── grub.cfg
