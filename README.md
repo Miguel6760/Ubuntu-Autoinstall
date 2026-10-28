@@ -119,7 +119,7 @@ Sirve tanto para Ubuntu Desktop como para live-server, la unica diferencia es si
 
 
 
-Una vez tienes los 2 archivos pasamos a la configuración del kernel. La iso tiene que saber que debe ver el fichero user-data y realizar la instalación automática. 
+Una vez tienes los 2 archivos pasamos a la configuración de grub. La iso tiene que saber que debe ver el fichero user-data y realizar la instalación automática. 
 Para ello modificamos el archivo boot/grub/grub.cfg. Debe quedar algo así:
 
 ```grub
